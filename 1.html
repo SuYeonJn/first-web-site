@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>배달서비스</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1><a href="index.html">배달서비스</a></h1>
+    <div id="grid">
+        <ul>
+            <li><a href="1.html" style="color:red">배달서비스</a></li>
+            <li><a href="2.html">제휴 식당</a></li>
+            <li><a href="3.html">구독 신청</a></li>
+            <li><a href="4.html">배달 시스템</a></li>
+        </ul>
+        <div>
+            <h2>배달서비스</h2>
+            <img src="delivery.jpg" width="400px">
+            <p> ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+            </p>
+        </div>
+    </div>
+    
+ 
+
+    <input type="button" value="night" onclick="
+        document.querySelector('body').style.backgroundColor = 'black';
+        document.querySelector('body').style.color = 'white';
+    ">
+    <input type="button" value="day" onclick="
+        document.querySelector('body').style.backgroundColor = 'white';
+        document.querySelector('body').style.color = 'black';
+    ">
+
+    <h2>조건문</h2>
+    <input id="night_day" type="button" value="night" onclick="
+        if(document.querySelector('#night_day').value==='night'){
+            document.querySelector('body').style.backgroundColor = 'black';
+            document.querySelector('body').style.color = 'white';
+            document.querySelector('#night_day').value = 'day';
+        }
+        else{
+            document.querySelector('body').style.backgroundColor = 'white';
+            document.querySelector('body').style.color = 'black';
+            document.querySelector('#night_day').value = 'night';
+        }
+    ">
+    
+    <h2>refactoring</h2>
+    <input type="button" value="night" onclick="
+    var target = document.querySelector('body');
+    if(this.value==='night'){
+        target.style.backgroundColor = 'black';
+        target.style.color = 'white';
+        this.value = 'day';
+    } else{
+        target.style.backgroundColor = 'white';
+        target.style.color = 'black';
+        this.value = 'night';
+    }
+    ">
+
+    <h2>Loop&array +links colorhandler</h2>
+    <input type="button" value="night" onclick="
+    var target = document.querySelector('body');
+    if(this.value==='night'){
+        target.style.backgroundColor = 'black';
+        target.style.color = 'white';
+    
+        var i = 0;
+        var list = document.querySelectorAll('a');
+        while(i < list.length){
+            list[i].style.color= 'powderblue';
+            i = i+1;
+        }
+
+        this.value = 'day';
+    } else{
+        target.style.backgroundColor = 'white';
+        target.style.color = 'black';
+        var i = 0;
+        var list = document.querySelectorAll('a');
+        while(i < list.length){
+            list[i].style.color= 'blue';
+            i = i+1;
+        }
+        this.value = 'night';
+    }
+    ">
+
+    <h2>Loop</h2>
+    <script>
+        document.write('1');
+        var i = 0;
+        while(i<3){
+            document.write('2');
+            document.write('3');
+            i=i+1;
+        }
+        document.write('4');
+    </script>  
+
+    <h2>function</h2>
+    <script>
+        function bodysetcolor(color){
+            document.querySelector('body').style.color = color;
+        }
+
+        function linksetcolor(color){
+        var i = 0;
+        var list = document.querySelectorAll('a');
+        while(i < list.length){
+            list[i].style.color= color;
+            i = i+1;
+            }
+        }
+
+        function bodysetbackgroundcolor(color){
+            document.querySelector('body').style.backgroundColor = color;
+        }
+            
+        function nightDayHandler1(self){
+            var target = document.querySelector('body');
+                if(self.value==='night'){
+                    bodysetbackgroundcolor('black')
+                    bodysetcolor('white');
+                    linksetcolor('powderblue');
+                    self.value = 'day';
+                } else{
+                    bodysetbackgroundcolor('white')
+                    bodysetcolor('black');
+                    linksetcolor('blue');
+                    self.value = 'night';
+                }
+        }
+    </script>
+    <input type="button" value="night" onclick="
+     nightDayHandler1(this);
+    ">
+
+    <h3>object</h3>
+    <script>
+    var restaurants = {
+        "pork" : "hanam", "beef": "ondol", "chicken":"pradak"
+    }
+    document.write("pork : "+restaurants.pork+"<br>");
+    restaurants.noodle = "hivietnam";
+    document.write(restaurants.noodle + "<br>");
+    restaurants["korean food"] = "baekam";
+    document.write("korean food : " + restaurants["korean food"]);
+
+    </script>
+
+    <h3>iterate</h3>
+    <script>
+        for (var key in restaurants){
+            document.write(key + " : "+ restaurants[key] +"<br>");
+        }
+    </script>
+
+    <h3>Property&Method</h3>
+    <script>
+        restaurants.showall = function(){
+            for (var key in this){
+            document.write(key + " : "+ this[key] +"<br>");
+            }
+        }
+        restaurants.showall();
+    </script>
+
+    <h3>testing</h3>
+    <script>
+        var restaurants2 = {
+            "pork" : "hanam", "beef": "ondol", "chicken":"pradak",
+            showall : function(){
+                for (var key in restaurants2){
+                document.write(key + " : "+ restaurants2[key] +"<br>");
+                }
+            }
+        }   
+        restaurants2.showall();
+    </script>
+    <h2>return</h2>
+    <script>
+        function plus (left, right){
+            document.write(left+right);
+        };
+        plus(2,3);
+
+        function sum (left, right){
+            return left+right;
+        };
+
+
+       document.write('<div style= "color:red">'+sum(3,5)+'</div>');
+        
+    </script>
+    <h2>function2</h2>
+    <script>
+        var body = {
+            setColor : function(color){
+                document.querySelector('body').style.color = color;
+            },
+            setBackgroundcolor : function(color){
+                document.querySelector('body').style.backgroundColor = color;
+            }
+        }       
+        var link = {
+            setcolor : function(color){
+                var i = 0;
+                var list = document.querySelectorAll('a');
+                while(i < list.length){
+                list[i].style.color= color;
+                i = i+1;
+                }
+            }
+        }  
+        function nightDayHandler2(self){
+            var target = document.querySelector('body');
+            if(self.value==='night'){
+                body.setBackgroundcolor('black')
+                body.setColor('white');
+                link.setcolor('powderblue');
+                self.value = 'day';
+            } else{
+                body.setBackgroundcolor('white')
+                body.setColor('black');
+                link.setcolor('blue');
+                self.value = 'night';
+            }
+        }
+    </script>
+    <input type="button" value="night" onclick="
+    nightDayHandler2(this);
+    ">
+
+    <h2>jquery</h2>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        var body = {
+            setColor : function(color){
+                $('body').css('color', color);              
+            },
+            setBackgroundcolor : function(color){
+                $('body').css('backgroundColor', color);              
+            }
+        }       
+        var link = {
+            setcolor : function(color){
+                // var i = 0;
+                // var list = document.querySelectorAll('a');
+                // while(i < list.length){
+                // list[i].style.color= color;
+                // i = i+1;
+                // }
+                $('a').css('color', color);
+            }
+        }  
+        function nightDayHandler3(self){
+            var target = document.querySelector('body');
+            if(self.value==='night'){
+                body.setBackgroundcolor('black')
+                body.setColor('white');
+                link.setcolor('powderblue');
+                self.value = 'day';
+            } else{
+                body.setBackgroundcolor('white')
+                body.setColor('black');
+                link.setcolor('blue');
+                self.value = 'night';
+            }
+        }
+    </script>
+    <input type="button" value="night" onclick="
+    nightDayHandler3(this);
+    ">
+</body>
+</html>
